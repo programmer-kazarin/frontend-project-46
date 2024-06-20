@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { program } from 'commander';
+import compare from './compare.js';
 
 program
   .name('gendiff')
@@ -9,3 +10,5 @@ program
   .argument('<filepath2>')
   .option('-f, --format [type]', 'output format');
 program.parse();
+const { args } = program;
+program.action(compare(args[0], args[1]));
