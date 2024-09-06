@@ -9,7 +9,7 @@ export default (file1, file2) => {
   const content2 = JSON.parse(fs.readFileSync(path2));
   const allKeys = _.sortBy(_.union(Object.keys(content1), Object.keys(content2)));
   console.log('{');
-  allKeys.forEach(key => {
+  allKeys.forEach((key) => {
     if (!Object.hasOwn(content2, key)) {
       console.log(`  - ${key}: ${content1[key]}`);
     } else if (Object.hasOwn(content1, key) && Object.hasOwn(content2, key)) {
@@ -18,7 +18,7 @@ export default (file1, file2) => {
       } else {
         console.log(`  - ${key}: ${content1[key]}`);
         console.log(`  + ${key}: ${content2[key]}`);
-      }      
+      }
     } else if (!Object.hasOwn(content1, key)) {
       console.log(`  + ${key}: ${content2[key]}`);
     }
