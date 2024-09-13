@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { program } from 'commander';
-import {compareFiles} from './compare.js';
+import compareFiles from './compare.js';
 
 program
   .name('gendiff')
