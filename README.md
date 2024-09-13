@@ -5,4 +5,4 @@
 
 [demo](https://asciinema.org/a/OaroziBoWS6dr07uiOCApuECd)
 
-${{secrets.CODECLIMATE}}
+${{ secrets.CODECLIMATE }}
