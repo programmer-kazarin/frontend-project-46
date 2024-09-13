@@ -2,26 +2,33 @@ import fs from 'fs';
 import path from 'path';
 import _ from 'lodash';
 
-export default (file1, file2) => {
+const compareFiles = (file1, file2) => {
   const path1 = path.resolve(process.cwd(), file1);
   const path2 = path.resolve(process.cwd(), file2);
   const content1 = JSON.parse(fs.readFileSync(path1));
   const content2 = JSON.parse(fs.readFileSync(path2));
-  const allKeys = _.sortBy(_.union(Object.keys(content1), Object.keys(content2)));
-  console.log('{');
+  return compareJsons(content1, content2);
+};
+
+const compareJsons = (json1, json2) => {
+  const allKeys = _.sortBy(_.union(Object.keys(json1), Object.keys(json2)));
+  var result = '{\n'; 
   allKeys.forEach((key) => {
-    if (!Object.hasOwn(content2, key)) {
-      console.log(`  - ${key}: ${content1[key]}`);
-    } else if (Object.hasOwn(content1, key) && Object.hasOwn(content2, key)) {
-      if (content1[key] === content2[key]) {
-        console.log(`    ${key}: ${content1[key]}`);
+    if (!Object.hasOwn(json2, key)) {
+      result += `  - ${key}: ${json1[key]}`;
+    } else if (Object.hasOwn(json1, key) && Object.hasOwn(json2, key)) {
+      if (json1[key] === json2[key]) {
+        result += `    ${key}: ${json1[key]}\n`;
       } else {
-        console.log(`  - ${key}: ${content1[key]}`);
-        console.log(`  + ${key}: ${content2[key]}`);
+        result += `  - ${key}: ${json1[key]}\n`;
+        result += `  + ${key}: ${json2[key]}\n`;
       }
-    } else if (!Object.hasOwn(content1, key)) {
-      console.log(`  + ${key}: ${content2[key]}`);
+    } else if (!Object.hasOwn(json1, key)) {
+      result += `  + ${key}: ${json2[key]}\n`;
     }
   });
-  console.log('}');
+  result += '}';
+  return result;
 };
+
+export {compareFiles};
