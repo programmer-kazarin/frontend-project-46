@@ -3,4 +3,5 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/39330c5f40e150b16470/maintainability)](https://codeclimate.com/github/programmer-kazarin/frontend-project-46/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/39330c5f40e150b16470/test_coverage)](https://codeclimate.com/github/programmer-kazarin/frontend-project-46/test_coverage)
 
-[demo](https://asciinema.org/a/OaroziBoWS6dr07uiOCApuECd)
+[Step 4](https://asciinema.org/a/OaroziBoWS6dr07uiOCApuECd)
+[Step 6](https://asciinema.org/a/IdHsieCWZFLK2L0mLPcYEPy4R)

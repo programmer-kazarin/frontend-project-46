@@ -1,8 +1,7 @@
-import fs from 'fs';
-import path from 'path';
 import _ from 'lodash';
+import parse from './parsers.js';
 
-const compareJsons = (json1, json2) => {
+const compareContent = (json1, json2) => {
   const allKeys = _.sortBy(_.union(Object.keys(json1), Object.keys(json2)));
   let result = '{\n';
   allKeys.forEach((key) => {
@@ -23,12 +22,6 @@ const compareJsons = (json1, json2) => {
   return result;
 };
 
-const compareFiles = (file1, file2) => {
-  const path1 = path.resolve(process.cwd(), file1);
-  const path2 = path.resolve(process.cwd(), file2);
-  const content1 = JSON.parse(fs.readFileSync(path1));
-  const content2 = JSON.parse(fs.readFileSync(path2));
-  return compareJsons(content1, content2);
-};
+const compareFiles = (file1, file2) => compareContent(parse(file1), parse(file2));
 
 export default compareFiles;
