@@ -10,5 +10,5 @@ export default (file) => {
     parse = yaml.load;
   }
 
-  return parse(fs.readFileSync(pathToFile));
+  return parse(fs.readFileSync(pathToFile), 'utf-8');
 };
