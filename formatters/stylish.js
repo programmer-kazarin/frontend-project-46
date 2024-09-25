@@ -26,9 +26,4 @@ const stylish = (diff, deep = 1) => {
   ].join('\n');
 };
 
-export default (diff, style) => {
-  if (style === 'stylish') {
-    return stylish(diff);
-  }
-  return `${JSON.stringify(diff, null, 2)}`;
-};
+export default stylish;
