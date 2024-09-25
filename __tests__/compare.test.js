@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import compareFiles from '../compare.js';
-import format from '../formatters/index.js';
+import compareFiles from '../src/compare.js';
+import format from '../src/formatters/index.js';
 
 const getFixturePath = (filename) => path.join('.', '__fixtures__', filename);
 
