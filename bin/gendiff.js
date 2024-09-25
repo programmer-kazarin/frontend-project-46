@@ -9,5 +9,5 @@ program
   .argument('<filepath1>')
   .argument('<filepath2>')
   .addOption(new Option('-f, --format [type]', 'output format', 'stylish').choices(['stylish', 'plain', 'json']))
-  .action((filepath1, filepath2, options) => gendiff(filepath1, filepath2, options.format));
+  .action((path1, path2, options) => console.log(gendiff(path1, path2, options.format)));
 program.parse();
