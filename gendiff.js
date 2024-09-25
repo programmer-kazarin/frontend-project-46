@@ -9,7 +9,7 @@ program
   .version('0.0.1')
   .argument('<filepath1>')
   .argument('<filepath2>')
-  .addOption(new Option('-f, --format [type]', 'output format', 'stylish').choices(['stylish', 'plain']));
+  .addOption(new Option('-f, --format [type]', 'output format', 'stylish').choices(['stylish', 'plain', 'json']));
 program.parse();
 const { args } = program;
 program.action(console.log(`${format(compareFiles(args[0], args[1]), program.opts().format)}`));
