@@ -5,10 +5,8 @@ import yaml from 'js-yaml';
 export default (file) => {
   const pathToFile = path.resolve(process.cwd(), file);
   const format = path.extname(pathToFile);
-  let { parse } = JSON;
   if (format === '.yml' || format === '.yaml') {
-    parse = yaml.load;
+    return yaml.load(fs.readFileSync(pathToFile), 'utf-8');
   }
-
-  return parse(fs.readFileSync(pathToFile), 'utf-8');
+  return JSON.parse(fs.readFileSync(pathToFile), 'utf-8');
 };

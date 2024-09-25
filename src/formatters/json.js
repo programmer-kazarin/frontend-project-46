@@ -8,7 +8,7 @@ const iterNoStatus = (diff) => {
   Object
     .entries(diff)
     .forEach(([key, val]) => {
-      result[key] = iterNoStatus(Object.hasOwn(val, 'value') ? val.value : val);
+      _.assign(result, { [key]: iterNoStatus(Object.hasOwn(val, 'value') ? val.value : val) });
     });
   return result;
 };
@@ -23,12 +23,12 @@ const iter = (diff) => {
     .forEach(([key, val]) => {
       if (Object.hasOwn(val, 'value')) {
         if (val.status === '+' || val.status === '-') {
-          result[key] = { value: iterNoStatus(val.value), status: val.status === '+' ? 'added' : 'removed' };
+          _.assign(result, { [key]: { value: iterNoStatus(val.value), status: val.status === '+' ? 'added' : 'removed' } });
         } else {
           result[key] = { value: iter(val.value), status: 'not changed' };
         }
       } else if (Object.hasOwn(val, 'before')) {
-        result[key] = { value: iterNoStatus(val.after.value), prevValue: iterNoStatus(val.before.value), status: 'changed' };
+        _.assign(result, { [key]: { value: iterNoStatus(val.after.value), prevValue: iterNoStatus(val.before.value), status: 'changed' } });
       }
     });
   return result;
