@@ -2,7 +2,7 @@ import stylish from './stylish.js';
 import plain from './plain.js';
 import json from './json.js';
 
-export default (diff, style) => {
+export default (diff, style = 'stylish') => {
   switch (style) {
     case 'stylish':
       return stylish(diff);
