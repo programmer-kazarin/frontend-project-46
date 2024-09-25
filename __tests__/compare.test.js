@@ -12,7 +12,7 @@ test('file: json, format: stylish', () => {
     .toEqual(resultContent);
 });
 
-test('file: json, format: stylish', () => {
+test('file: json, format: plain', () => {
   const pathToResult = path.resolve(process.cwd(), '__fixtures__/file1_file2_plain_result.txt');
   const resultContent = fs.readFileSync(pathToResult, 'utf8');
   expect(format(compareFiles(getFixturePath('file1.json'), getFixturePath('file2.json')), 'plain'))

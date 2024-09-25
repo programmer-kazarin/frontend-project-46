@@ -25,7 +25,7 @@ const iter = (diff) => {
         if (val.status === '+' || val.status === '-') {
           _.assign(result, { [key]: { value: iterNoStatus(val.value), status: val.status === '+' ? 'added' : 'removed' } });
         } else {
-          result[key] = { value: iter(val.value), status: 'not changed' };
+          _.assign(result, { [key]: { value: iter(val.value), status: 'not changed' } });
         }
       } else if (Object.hasOwn(val, 'before')) {
         _.assign(result, { [key]: { value: iterNoStatus(val.after.value), prevValue: iterNoStatus(val.before.value), status: 'changed' } });
